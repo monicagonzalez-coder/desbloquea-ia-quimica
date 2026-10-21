@@ -1,0 +1,437 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unlock Your Chemistry IA | IB Chemistry</title>
+<style>
+:root {
+  --navy:#172b4d;--blue:#3157a4;--cyan:#dff4f2;
+  --cream:#f7f5ef;--white:#fff;--ink:#202b3c;
+  --muted:#657287;--border:#dce2eb;--green:#27765e;
+  --orange:#f2b45b;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--ink);line-height:1.5}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+header{background:var(--navy);color:white;padding:24px 6%}
+.header-inner{max-width:1100px;margin:auto}
+.eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:12px;color:#bfe5e2;font-weight:bold}
+h1{margin:8px 0;font-size:clamp(27px,4vw,42px)}
+header p{max-width:700px;margin-bottom:0;color:#e0e7f2}
+main{max-width:1100px;padding:24px 18px 48px;margin:auto}
+.progress-wrap{background:white;border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:20px}
+.progress-label{display:flex;justify-content:space-between;gap:10px;font-size:13px;color:var(--muted);margin-bottom:9px}
+.progress-track{height:8px;background:#e8edf4;border-radius:20px;overflow:hidden}
+.progress-bar{height:100%;width:16.67%;background:var(--blue);transition:width .2s}
+.steps{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin-top:14px}
+.step-dot{padding:8px 3px;border:1px solid var(--border);background:white;border-radius:8px;color:var(--muted);font-size:12px}
+.step-dot.active{background:var(--navy);color:white;border-color:var(--navy)}
+.page{display:none;background:white;border:1px solid var(--border);border-radius:18px;padding:clamp(18px,4vw,34px);box-shadow:0 5px 20px #172b4d0a}
+.page.active{display:block}
+.page-kicker{color:var(--blue);text-transform:uppercase;letter-spacing:1.5px;font-size:12px;font-weight:bold}
+h2{font-size:clamp(23px,3vw,31px);margin:7px 0 10px}
+h3{font-size:18px;margin:0 0 8px}
+.intro{color:var(--muted);max-width:780px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:20px 0}
+.card{border:1px solid var(--border);border-radius:12px;padding:17px;background:white}
+.card.selected{border:2px solid var(--blue);background:#f4f7ff}
+.topic-card{cursor:pointer;transition:.15s}
+.topic-card:hover{border-color:var(--blue);transform:translateY(-1px)}
+.topic-card .emoji{font-size:26px}
+.topic-card p{margin:4px 0 0;color:var(--muted);font-size:14px}
+label{display:block;font-weight:bold;font-size:14px;margin:14px 0 6px}
+input,textarea,select{width:100%;border:1px solid #cbd4e1;border-radius:9px;padding:11px 12px;color:var(--ink);background:white}
+textarea{min-height:82px;resize:vertical}
+input:focus,textarea:focus,select:focus{outline:2px solid #b9cafa;border-color:var(--blue)}
+.small{color:var(--muted);font-size:13px}
+.idea-list{display:grid;gap:10px;margin-top:16px}
+.idea{border:1px solid var(--border);border-radius:11px;padding:14px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px}
+.idea p{margin:0}
+.idea-number{display:inline-block;color:var(--blue);font-weight:bold;margin-right:5px}
+.btn{border:0;border-radius:9px;padding:11px 16px;font-weight:bold;background:var(--blue);color:white}
+.btn:hover{filter:brightness(.94)}
+.btn.secondary{background:white;color:var(--navy);border:1px solid var(--border)}
+.btn.light{background:var(--cyan);color:var(--navy)}
+.btn.small-btn{padding:8px 10px;font-size:13px}
+.navigation{display:flex;justify-content:space-between;gap:12px;margin-top:22px;align-items:center}
+.notice{background:#fff6e7;border-left:4px solid var(--orange);padding:13px 15px;border-radius:7px;margin:18px 0}
+.success{background:#eaf7f1;border-left:4px solid var(--green);padding:13px 15px;border-radius:7px;margin:15px 0}
+.pill{display:inline-block;padding:4px 9px;background:#edf1f8;border-radius:20px;font-size:12px;color:var(--navy);margin:3px}
+.check-item{display:flex;align-items:flex-start;gap:10px;border-bottom:1px solid #edf0f4;padding:12px 0}
+.check-item input{width:auto;margin-top:5px}
+.check-item label{margin:0;font-weight:normal}
+.check-item label strong{display:block;margin-bottom:3px}
+.question-preview{padding:20px;background:#f0f5ff;border:1px solid #d6e2fb;border-radius:12px;font-size:19px;font-weight:bold;color:var(--navy);margin:16px 0}
+.result-box{border:1px solid var(--border);background:#fbfcfe;border-radius:12px;padding:18px;margin-top:15px}
+footer{text-align:center;padding:20px;font-size:12px;color:var(--muted)}
+@media(max-width:680px){
+.grid{grid-template-columns:1fr}.steps{grid-template-columns:repeat(3,1fr)}
+.idea{grid-template-columns:1fr}.idea .btn{justify-self:start}
+.navigation .btn{padding:10px}
+}
+@media print{
+header,.progress-wrap,.navigation,footer{display:none}
+.page{display:block!important;box-shadow:none;margin-bottom:20px}
+body{background:white}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="eyebrow">IB Chemistry · Internal Assessment</div>
+    <h1>Unlock Your Chemistry IA</h1>
+    <p>From curiosity to a focused, measurable and feasible chemistry research question.</p>
+  </div>
+</header>
+
+<main>
+<div class="progress-wrap">
+  <div class="progress-label">
+    <span id="progressText">Stage 1 of 6</span>
+    <span id="progressPercent">17% complete</span>
+  </div>
+  <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+  <div class="steps">
+    <button class="step-dot active" data-step="0">1. Explore</button>
+    <button class="step-dot" data-step="1">2. Get inspired</button>
+    <button class="step-dot" data-step="2">3. Transform</button>
+    <button class="step-dot" data-step="3">4. Build</button>
+    <button class="step-dot" data-step="4">5. Check</button>
+    <button class="step-dot" data-step="5">6. Your proposal</button>
+  </div>
+</div>
+
+<!-- PAGE 1 -->
+<section class="page active" data-page="0">
+  <div class="page-kicker">01 · Explore</div>
+  <h2>Start with something that makes you curious</h2>
+  <p class="intro">A good investigation does not have to start with a perfect question. Start by observing something, noticing a pattern or asking why a phenomenon occurs.</p>
+  <div class="grid">
+    <div class="card"><h3>🍋 Everyday chemistry</h3><p>Why do some foods change colour? Why do certain products react with water?</p></div>
+    <div class="card"><h3>🌍 The environment</h3><p>How do water samples differ? How does the environment affect corrosion?</p></div>
+    <div class="card"><h3>⚡ Things that change</h3><p>What makes a reaction faster? How does temperature affect a measurable property?</p></div>
+    <div class="card"><h3>🧪 Something measurable</h3><p>Think about pH, mass, gas volume, temperature, conductivity, absorbance or concentration.</p></div>
+  </div>
+  <label for="interest">Which topics, objects or phenomena interest you?</label>
+  <textarea id="interest" placeholder="e.g. drinks, the environment, metals, cosmetics, energy, food..."></textarea>
+  <label for="observation">What change or phenomenon would you like to investigate?</label>
+  <textarea id="observation" placeholder="e.g. I wonder why the rate of a reaction changes when it is heated..."></textarea>
+  <div class="notice"><strong>Challenge:</strong> think of a chemical property you could measure. “Investigating pollution” is too broad; measuring a specific property in several samples is a more useful starting point.</div>
+  <div class="navigation"><span class="small">Suggested time: 5 minutes</span><button class="btn" onclick="go(1)">Explore ideas →</button></div>
+</section>
+
+<!-- PAGE 2 -->
+<section class="page" data-page="1">
+  <div class="page-kicker">02 · Get inspired</div>
+  <h2>Choose a category and explore ideas</h2>
+  <p class="intro">Select the category that interests you most. Each category contains six possible research questions. Click “Use as a starting point” to carry an idea into your proposal and adapt it.</p>
+  <div class="grid" id="topicGrid"></div>
+  <div id="ideasPanel" class="card" style="display:none">
+    <h3 id="ideasTitle">Research ideas</h3>
+    <p class="small">These are starting points, not finished research questions. Check that you can measure the dependent variable using a suitable method and that the investigation is safe.</p>
+    <div class="idea-list" id="ideaList"></div>
+  </div>
+  <div id="selectedIdeaNotice" class="success" style="display:none"></div>
+  <div class="navigation"><button class="btn secondary" onclick="go(0)">← Back</button><span class="small">Suggested time: 8 minutes</span><button class="btn" onclick="go(2)">Transform your idea →</button></div>
+</section>
+
+<!-- PAGE 3 -->
+<section class="page" data-page="2">
+  <div class="page-kicker">03 · Transform</div>
+  <h2>Turn your idea into an experiment</h2>
+  <p class="intro">A research question usually links an independent variable to a dependent variable while keeping other conditions under control.</p>
+  <div class="notice">Do not settle for the first version. Change the variable, the sample, the range of values or the measurement method.</div>
+  <div class="grid">
+    <div class="card"><h3>1. Change the independent variable</h3><p>Which factor can you deliberately change?</p><span class="pill">Temperature</span><span class="pill">Concentration</span><span class="pill">Time</span><span class="pill">pH</span><span class="pill">Surface area</span><span class="pill">Material type</span></div>
+    <div class="card"><h3>2. Decide what to measure</h3><p>Choose a quantitative measurement and a reasonably precise method.</p><span class="pill">pH</span><span class="pill">Mass</span><span class="pill">Gas volume</span><span class="pill">Conductivity</span><span class="pill">Temperature</span><span class="pill">Reaction time</span></div>
+  </div>
+  <label for="system">Chemical system or phenomenon</label>
+  <input id="system" placeholder="e.g. iron corrosion in salt solutions">
+  <label for="iv">Independent variable: what will you change?</label>
+  <input id="iv" placeholder="e.g. NaCl concentration in the solution">
+  <label for="ivRange">Which values or range could you investigate?</label>
+  <input id="ivRange" placeholder="e.g. five concentrations between 0.0 and 1.0 mol dm⁻³">
+  <label for="dv">Dependent variable: what will you measure?</label>
+  <input id="dv" placeholder="e.g. change in iron mass after a defined period">
+  <label for="method">How could you measure it?</label>
+  <textarea id="method" placeholder="e.g. weigh samples before and after using a balance and a controlled procedure..."></textarea>
+  <label for="chemistry">Which chemistry concepts explain the phenomenon?</label>
+  <input id="chemistry" placeholder="e.g. redox, kinetics, equilibrium, acids and bases...">
+  <div class="navigation"><button class="btn secondary" onclick="go(1)">← Back</button><span class="small">Suggested time: 10 minutes</span><button class="btn" onclick="go(3)">Build your question →</button></div>
+</section>
+
+<!-- PAGE 4 -->
+<section class="page" data-page="3">
+  <div class="page-kicker">04 · Build</div>
+  <h2>Write your research question</h2>
+  <p class="intro">A well-defined question states what changes, what is measured and which chemical system is being investigated.</p>
+  <div class="card"><h3>A useful template</h3><p>How does <strong>the independent variable</strong> affect <strong>the dependent variable</strong> in <strong>a defined chemical system</strong>?</p></div>
+  <label for="rq">Write your research question</label>
+  <textarea id="rq" style="min-height:110px" placeholder="How does ... affect ... in ...?"></textarea>
+  <button class="btn light" onclick="buildQuestion()">Create a draft from my variables</button>
+  <p class="small">The draft is editable. Check that the question is scientifically precise and chemically meaningful.</p>
+  <div class="question-preview" id="questionPreview">Your research question will appear here.</div>
+  <label for="why">Why does this question interest you?</label>
+  <textarea id="why" placeholder="Briefly explain what you want to understand and which chemical relationship you will investigate."></textarea>
+  <label for="prediction">What relationship do you expect to observe, and why?</label>
+  <textarea id="prediction" placeholder="Write a prediction based on a chemical principle. You do not need to be correct; you need to justify your reasoning."></textarea>
+  <div class="navigation"><button class="btn secondary" onclick="go(2)">← Back</button><span class="small">Suggested time: 8 minutes</span><button class="btn" onclick="go(4)">Check feasibility →</button></div>
+</section>
+
+<!-- PAGE 5 -->
+<section class="page" data-page="4">
+  <div class="page-kicker">05 · Check</div>
+  <h2>Is your investigation feasible?</h2>
+  <p class="intro">Tick each criterion when you can answer yes. If something is unclear, revise your question or consult your teacher before committing to the investigation.</p>
+  <div id="checklist">
+    <div class="check-item"><input type="checkbox" id="c1"><label for="c1"><strong>Specific question</strong>I have defined a specific chemical system rather than an overly broad topic.</label></div>
+    <div class="check-item"><input type="checkbox" id="c2"><label for="c2"><strong>Clear variables</strong>I know what I will change, what I will measure and which conditions I will control.</label></div>
+    <div class="check-item"><input type="checkbox" id="c3"><label for="c3"><strong>Quantitative measurement</strong>I can collect numerical data using suitable instruments and a reliable procedure.</label></div>
+    <div class="check-item"><input type="checkbox" id="c4"><label for="c4"><strong>Relevant chemistry</strong>I can explain the chemical principles, models or concepts involved.</label></div>
+    <div class="check-item"><input type="checkbox" id="c5"><label for="c5"><strong>Sufficient data</strong>I can plan several values of the independent variable and reasonable repeats.</label></div>
+    <div class="check-item"><input type="checkbox" id="c6"><label for="c6"><strong>Feasibility</strong>I have, or can access, the time, materials and instruments I need.</label></div>
+    <div class="check-item"><input type="checkbox" id="c7"><label for="c7"><strong>Safety</strong>The proposed procedure can be assessed under laboratory safety rules and teacher supervision.</label></div>
+  </div>
+  <div class="result-box"><strong id="checkCount">0 of 7 criteria checked</strong><p class="small" id="checkAdvice">Review the criteria to identify what still needs clarification.</p></div>
+  <label for="limitations">What difficulties or limitations do you anticipate?</label>
+  <textarea id="limitations" placeholder="e.g. instrument precision, controlling temperature, sample availability..."></textarea>
+  <div class="navigation"><button class="btn secondary" onclick="go(3)">← Back</button><span class="small">Suggested time: 7 minutes</span><button class="btn" onclick="go(5)">Prepare your proposal →</button></div>
+</section>
+
+<!-- PAGE 6 -->
+<section class="page" data-page="5">
+  <div class="page-kicker">06 · Your proposal</div>
+  <h2>Your first Chemistry IA proposal</h2>
+  <p class="intro">Review what you have developed. This is a starting point for discussion with your teacher, not final approval of your experimental design.</p>
+  <div class="result-box" id="finalSummary"></div>
+  <div class="notice"><strong>Before finalising:</strong> check that the question can be answered with experimental data, that the analysis will explore a chemical relationship and that the procedure is safe and feasible.</div>
+  <div class="grid">
+    <button class="btn" onclick="copyProposal()">Copy proposal</button>
+    <button class="btn secondary" onclick="downloadProposal()">Download as TXT</button>
+    <button class="btn secondary" onclick="window.print()">Print / Save as PDF</button>
+    <button class="btn secondary" onclick="resetApp()">Start again</button>
+  </div>
+  <label for="nextStep">What is your next step?</label>
+  <textarea id="nextStep" placeholder="e.g. find a suitable measurement method, check available equipment, research the chemistry..."></textarea>
+  <div class="success">Well done! A strong IA is not about choosing the most complicated topic. It is about asking a clear question that allows you to collect, analyse and interpret good-quality data.</div>
+  <p class="small">Remember to download or copy your proposal before closing this page. Your answers are not automatically saved online.</p>
+</section>
+</main>
+<footer>Planning activity · IB Chemistry · Always check experimental methods and safety with your teacher.</footer>
+
+<script>
+const topics = [
+{
+name:"Food and drinks",emoji:"🍎",desc:"Chemical changes, acidity, preservation and fermentation.",
+ideas:[
+{q:"How does ascorbic acid concentration affect browning in an apple sample?",system:"Apple browning at different ascorbic acid concentrations",iv:"Ascorbic acid concentration",dv:"Colour change measured quantitatively",chem:"Oxidation and chemical kinetics"},
+{q:"How does temperature affect the solubility of a solid component of a drink?",system:"Solubility of a solid in water at different temperatures",iv:"Water temperature",dv:"Maximum mass dissolved per volume of solvent",chem:"Solubility and intermolecular interactions"},
+{q:"How does titratable acidity vary among different fruit juices?",system:"Titratable acidity of different fruit juices",iv:"Type of fruit juice",dv:"Volume of a standardised base required for titration",chem:"Acids and bases; volumetric analysis"},
+{q:"How does sugar concentration affect the rate of yeast fermentation under controlled conditions?",system:"Yeast fermentation at different sugar concentrations",iv:"Sugar concentration",dv:"Volume of carbon dioxide produced per unit time",chem:"Kinetics and biochemical processes"},
+{q:"What relationship exists between the concentration of a known acid and the pH of its solutions?",system:"Solutions of a known acid at different concentrations",iv:"Acid concentration",dv:"pH measured using a suitable instrument",chem:"Acids, bases and equilibrium"},
+{q:"How does temperature affect the rate of browning in a controlled food system?",system:"Browning in a food system at different temperatures",iv:"Temperature",dv:"Colour change per unit time",chem:"Chemical kinetics and oxidation"}
+]},
+{
+name:"Water and solutions",emoji:"💧",desc:"Concentration, pH, solubility, hardness and conductivity.",
+ideas:[
+{q:"How does temperature affect the solubility of a specific salt in water?",system:"Solubility of a salt in water",iv:"Temperature",dv:"Mass of salt dissolved per fixed amount of water",chem:"Dissolution equilibrium and solubility"},
+{q:"How does dilution of an acid of known concentration affect its pH?",system:"Diluted solutions of a known acid",iv:"Dilution factor",dv:"Solution pH",chem:"Acids and bases"},
+{q:"What differences in hardness can be observed between different water samples?",system:"Hardness of different water samples",iv:"Sample origin or type",dv:"Hardness measured using a suitable analytical method",chem:"Dissolved ions and quantitative analysis"},
+{q:"How does salt concentration affect the electrical conductivity of its solution?",system:"Aqueous solutions of a known salt",iv:"Salt concentration",dv:"Electrical conductivity",chem:"Mobile ions and conductivity"},
+{q:"How does temperature affect the solubility of a gas in a liquid?",system:"Solubility of a gas in a liquid",iv:"Temperature",dv:"A suitable quantitative indicator of dissolved gas concentration",chem:"Equilibrium and gas solubility"},
+{q:"How does the initial concentration of a reactant affect the equilibrium position of a reversible chemical system?",system:"A suitable chemical equilibrium system",iv:"Initial reactant concentration",dv:"Equilibrium concentration or a related measurable quantity",chem:"Chemical equilibrium and Le Châtelier's principle"}
+]},
+{
+name:"Materials and metals",emoji:"🔩",desc:"Corrosion, material properties and electrochemistry.",
+ideas:[
+{q:"How does NaCl concentration affect iron corrosion under controlled conditions?",system:"Iron corrosion in NaCl solutions",iv:"NaCl concentration",dv:"Mass change or another validated quantitative corrosion indicator",chem:"Redox reactions and corrosion"},
+{q:"How does the concentration of a salt solution affect its electrical conductivity?",system:"Solutions of a known salt",iv:"Salt concentration",dv:"Electrical conductivity",chem:"Ionic conductivity"},
+{q:"How does the electrical resistance of a metal conductor change with temperature?",system:"Resistance of a metal conductor",iv:"Temperature",dv:"Electrical resistance",chem:"Material properties and electron movement"},
+{q:"How does metal identity affect the measured potential of an electrochemical cell?",system:"Electrochemical cells using defined metal pairs",iv:"Identity of one electrode metal",dv:"Cell potential difference",chem:"Electrochemistry and electrode potentials"},
+{q:"How does electrolyte concentration affect the voltage of a defined electrochemical cell?",system:"An electrochemical cell with defined electrodes and electrolyte",iv:"Electrolyte concentration",dv:"Cell voltage",chem:"Electrochemistry and the Nernst equation"},
+{q:"What relationship exists between alloy composition and a selected measurable property?",system:"Comparison of identified, available alloys",iv:"Alloy type or composition",dv:"A suitable quantitative, measurable property",chem:"Metallic bonding and material structure"}
+]},
+{
+name:"Household products",emoji:"🧴",desc:"Neutralisation, acidity and properties of everyday products.",
+ideas:[
+{q:"How does the neutralising capacity vary among different antacid samples?",system:"Neutralising capacity of antacid products",iv:"Antacid type or sample mass",dv:"Amount of acid neutralised using a titration method",chem:"Acids, bases and stoichiometry"},
+{q:"How does dilution of a cleaning product affect its pH?",system:"Diluted solutions of a product of known composition",iv:"Dilution factor",dv:"pH",chem:"Acids, bases and concentration"},
+{q:"How does titratable acidity vary among vinegar samples?",system:"Titratable acidity of different vinegars",iv:"Vinegar type",dv:"Volume of a standardised base used in titration",chem:"Acids and bases; titration"},
+{q:"How does water hardness affect the amount of precipitate formed with a suitable reagent?",system:"Water samples with different hardness levels",iv:"Water hardness",dv:"Mass or amount of precipitate measured using a defined method",chem:"Precipitation and solubility"},
+{q:"How does the amount of a reagent affect the neutralisation of a fixed amount of acid?",system:"A neutralisation reaction with controlled quantities",iv:"Amount of reagent added",dv:"Final pH or amount of acid neutralised",chem:"Stoichiometry and neutralisation"},
+{q:"How does the concentration of a coloured solution affect its absorbance?",system:"Solutions of a suitable coloured substance",iv:"Solution concentration",dv:"Absorbance measured using a colorimeter or spectrophotometer",chem:"Spectrophotometry and the Beer–Lambert law"}
+]},
+{
+name:"Energy and reaction rates",emoji:"⚡",desc:"Kinetics, temperature, catalysts and energy changes.",
+ideas:[
+{q:"How does temperature affect the rate of a safe reaction suitable for laboratory investigation?",system:"A suitable reaction conducted at different temperatures",iv:"Temperature",dv:"Time to reach a defined endpoint or calculated reaction rate",chem:"Chemical kinetics and activation energy"},
+{q:"How does reactant concentration affect the rate of a chemical reaction?",system:"A suitable reaction with different initial reactant concentrations",iv:"Initial reactant concentration",dv:"Reaction rate calculated from experimental data",chem:"Chemical kinetics and rate laws"},
+{q:"How does the energy transferred per unit mass of fuel vary in a controlled calorimetry experiment?",system:"A calorimetry experiment using suitable fuels under supervision",iv:"Fuel type",dv:"Energy transferred per unit mass",chem:"Enthalpy of combustion and calorimetry"},
+{q:"How does catalyst concentration affect the rate of a selected reaction?",system:"A catalysed reaction under controlled conditions",iv:"Catalyst amount or concentration",dv:"Reaction rate measured using a suitable method",chem:"Catalysis and kinetics"},
+{q:"How does temperature affect the rate constant of a reaction?",system:"A reaction with sufficient data to estimate its rate constant",iv:"Temperature",dv:"Rate constant calculated from experimental data",chem:"The Arrhenius equation and kinetics"},
+{q:"How does the amount of dissolved salt affect the temperature change of a solution?",system:"Dissolution of a suitable salt in water",iv:"Amount of salt dissolved per fixed mass of water",dv:"Temperature change",chem:"Enthalpy of solution and energy transfer"}
+]}
+];
+
+let currentPage=0,selectedTopic=-1,selectedIdea=null;
+const $=id=>document.getElementById(id);
+
+function go(page){
+ currentPage=Math.max(0,Math.min(5,page));
+ document.querySelectorAll(".page").forEach((p,i)=>p.classList.toggle("active",i===currentPage));
+ document.querySelectorAll(".step-dot").forEach((b,i)=>b.classList.toggle("active",i===currentPage));
+ const percent=Math.round(((currentPage+1)/6)*100);
+ $("progressBar").style.width=percent+"%";
+ $("progressText").textContent=`Stage ${currentPage+1} of 6`;
+ $("progressPercent").textContent=`${percent}% complete`;
+ if(currentPage===3)buildQuestion();
+ if(currentPage===4)updateChecks();
+ if(currentPage===5)updateSummary();
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+document.querySelectorAll(".step-dot").forEach(btn=>btn.addEventListener("click",()=>go(Number(btn.dataset.step))));
+
+function renderTopics(){
+ $("topicGrid").innerHTML=topics.map((t,i)=>`
+ <div class="card topic-card ${selectedTopic===i?"selected":""}" role="button" tabindex="0"
+ onclick="showIdeas(${i})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showIdeas(${i})}">
+ <div class="emoji">${t.emoji}</div><h3>${t.name}</h3><p>${t.desc}</p><p><strong>6 ideas to explore →</strong></p></div>`).join("");
+}
+function showIdeas(index){
+ selectedTopic=index;
+ const topic=topics[index];
+ $("ideasTitle").textContent=`${topic.emoji} ${topic.name} · 6 ideas`;
+ $("ideaList").innerHTML=topic.ideas.map((idea,i)=>`
+ <div class="idea"><p><span class="idea-number">${i+1}.</span>${idea.q}</p>
+ <button class="btn small-btn" onclick="chooseIdea(${index},${i})">Use as a starting point</button></div>`).join("");
+ $("ideasPanel").style.display="block";
+ renderTopics();
+ $("ideasPanel").scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+function chooseIdea(topicIndex,ideaIndex){
+ selectedTopic=topicIndex;
+ selectedIdea=topics[topicIndex].ideas[ideaIndex];
+ $("system").value=selectedIdea.system;
+ $("iv").value=selectedIdea.iv;
+ $("dv").value=selectedIdea.dv;
+ $("chemistry").value=selectedIdea.chem;
+ $("rq").value=selectedIdea.q;
+ $("questionPreview").textContent=selectedIdea.q;
+ $("selectedIdeaNotice").style.display="block";
+ $("selectedIdeaNotice").textContent="Selected idea: "+selectedIdea.q+" You can adapt it in the following stages.";
+ $("selectedIdeaNotice").scrollIntoView({behavior:"smooth",block:"nearest"});
+ renderTopics();
+}
+function buildQuestion(){
+ const system=$("system").value.trim()||"[chemical system]";
+ const iv=$("iv").value.trim()||"[independent variable]";
+ const dv=$("dv").value.trim()||"[dependent variable]";
+ const question=`How does ${iv.charAt(0).toLowerCase()+iv.slice(1)} affect ${dv.charAt(0).toLowerCase()+dv.slice(1)} in ${system.charAt(0).toLowerCase()+system.slice(1)}?`;
+ if(!$("rq").value.trim()||$("rq").value.trim()===(selectedIdea?selectedIdea.q:""))$("rq").value=question;
+ $("questionPreview").textContent=$("rq").value.trim()||question;
+}
+$("rq").addEventListener("input",()=>$("questionPreview").textContent=$("rq").value.trim()||"Your research question will appear here.");
+
+function updateChecks(){
+ const checks=[...document.querySelectorAll('#checklist input[type="checkbox"]')];
+ const count=checks.filter(c=>c.checked).length;
+ $("checkCount").textContent=`${count} of ${checks.length} criteria checked`;
+ $("checkAdvice").textContent=count===checks.length
+ ?"You have reviewed all the criteria. Still confirm the experimental design and safety with your teacher."
+ :count>=5
+ ?"You are making good progress. Review the remaining criteria before finalising your method."
+ :"Review the criteria to identify what still needs clarification.";
+}
+document.querySelectorAll('#checklist input').forEach(c=>c.addEventListener("change",updateChecks));
+function val(id){return $(id).value.trim()||"Not yet specified";}
+function proposalText(){
+ return `INITIAL CHEMISTRY IA PROPOSAL
+
+Initial interests:
+${val("interest")}
+
+Observation or phenomenon:
+${val("observation")}
+
+Research question:
+${val("rq")}
+
+Chemical system:
+${val("system")}
+
+Independent variable:
+${val("iv")}
+
+Proposed range or values:
+${val("ivRange")}
+
+Dependent variable:
+${val("dv")}
+
+Proposed measurement method:
+${val("method")}
+
+Relevant chemistry concepts:
+${val("chemistry")}
+
+Reason for choosing the question:
+${val("why")}
+
+Reasoned prediction:
+${val("prediction")}
+
+Anticipated limitations:
+${val("limitations")}
+
+Next step:
+${val("nextStep")}
+
+Note: This is a preliminary proposal. The method, feasibility and safety must be reviewed with the teacher.`;
+}
+function escapeHTML(text){
+ return String(text).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function updateSummary(){
+ $("finalSummary").innerHTML=`
+ <h3>Research question</h3><p><strong>${escapeHTML(val("rq"))}</strong></p>
+ <h3>Chemical system</h3><p>${escapeHTML(val("system"))}</p>
+ <h3>Variables</h3><p><strong>Independent:</strong> ${escapeHTML(val("iv"))}</p>
+ <p><strong>Proposed range:</strong> ${escapeHTML(val("ivRange"))}</p>
+ <p><strong>Dependent:</strong> ${escapeHTML(val("dv"))}</p>
+ <h3>Measurement method</h3><p>${escapeHTML(val("method"))}</p>
+ <h3>Chemistry concepts</h3><p>${escapeHTML(val("chemistry"))}</p>
+ <h3>Reason for choosing the question</h3><p>${escapeHTML(val("why"))}</p>
+ <h3>Prediction</h3><p>${escapeHTML(val("prediction"))}</p>
+ <h3>Limitations</h3><p>${escapeHTML(val("limitations"))}</p>`;
+}
+async function copyProposal(){
+ const text=proposalText();
+ try{await navigator.clipboard.writeText(text);alert("Proposal copied. You can paste it into your document.");}
+ catch(e){
+  const area=document.createElement("textarea");area.value=text;document.body.appendChild(area);
+  area.select();const ok=document.execCommand("copy");area.remove();
+  alert(ok?"Proposal copied.":"Could not copy automatically. Please download the TXT file.");
+ }
+}
+function downloadProposal(){
+ const blob=new Blob([proposalText()],{type:"text/plain;charset=utf-8"});
+ const url=URL.createObjectURL(blob);const a=document.createElement("a");
+ a.href=url;a.download="chemistry_IA_initial_proposal.txt";a.click();URL.revokeObjectURL(url);
+}
+function resetApp(){
+ if(!confirm("Start again? Your current answers will be cleared."))return;
+ document.querySelectorAll("input:not([type=checkbox]),textarea").forEach(el=>el.value="");
+ document.querySelectorAll('#checklist input[type="checkbox"]').forEach(el=>el.checked=false);
+ selectedTopic=-1;selectedIdea=null;
+ $("ideasPanel").style.display="none";$("selectedIdeaNotice").style.display="none";
+ $("questionPreview").textContent="Your research question will appear here.";
+ renderTopics();updateChecks();go(0);
+}
+renderTopics();updateChecks();
+</script>
+</body>
+</html>
